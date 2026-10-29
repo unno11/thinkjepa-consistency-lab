@@ -29,16 +29,10 @@ Reasoning Model."
 arXiv preprint arXiv:2603.22281, 2026.
 
 Third-party notice:
-- Files under `egodex/` and `egodex/utils/` retain
-  upstream Apple EgoDex attribution and should continue to ship with:
-  - `egodex/LICENSE.txt`
-  - `egodex/ACKNOWLEDGEMENTS.txt`
-  - `egodex/utils/LICENSE.txt`
-  - `egodex/utils/ACKNOWLEDGEMENTS.txt`
-- Files under `vjepa2/` retain upstream Meta/Facebook notices and should
+- Files originally under `vjepa2/`, now under `src/vendor/`, retain upstream Meta/Facebook notices and should
   continue to ship with:
-  - `vjepa2/LICENSE`
-  - `vjepa2/APACHE-LICENSE`
+  - `src/vendor/LICENSE`
+  - `src/vendor/APACHE-LICENSE`
 - The root ThinkJEPA license applies to ThinkJEPA-authored material unless a
   file or directory states otherwise; it does not replace separate third-party
   notices distributed with this repository.
@@ -46,6 +40,7 @@ Third-party notice:
 Modified distribution: thinkjepa-consistency-lab, maintained by unno11.
 https://github.com/unno11/thinkjepa-consistency-lab
 This is an independent modified research distribution, not an official
-ThinkJEPA release. It adds consistency experiments, archived validation
-results, public documentation and release verification utilities.
+ThinkJEPA release. It contains the core model/readout, motion-geometry losses,
+trajectory metrics and projection control, with reported validation results.
+Full data pipelines and training orchestration are maintained upstream.
 Original and third-party notices above remain applicable.

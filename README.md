@@ -1,26 +1,67 @@
 # ThinkJEPA Consistency Lab
 
-**面向手部运动预测的运动—几何一致性研究。** 基于 ThinkJEPA，比较训练时的一致性正则与无需训练的骨长投影，评估轨迹精度、骨骼几何和运动动态之间的权衡。
+**基于 ThinkJEPA 的手部运动预测与运动—几何一致性扩展。** 比较训练时约束与预测后几何投影，研究轨迹精度、骨骼几何和动态一致性的权衡。
 
-[方法](docs/METHOD.md) · [训练与评测](docs/REPRODUCTION.md) · [实验结果](results/README.md) · [适用边界](docs/RESULTS_AND_LIMITATIONS.md)
+![Architecture and gradient scope](docs/assets/pipeline.svg)
 
-![Model pipeline and gradient scope](docs/assets/pipeline.svg)
+## 方法
 
-## 研究设计
+- **B**：ThinkJEPA 轨迹预测基线。
+- **MG**：对轨迹读出头施加骨长、关节角、速度和加速度约束。读出路径接收 detach 后的 predictor 特征，MG 梯度作用于读出头。
+- **KProj**：使用预测序列自身的骨长中位数做几何投影，不读取未来真实关节，也不需要额外训练。
 
-在相同的缓存特征、数据划分和训练设置下，对比三种方法：
+## 核心代码
 
-| 方法 | 实现 | 目的 |
-| --- | --- | --- |
-| **B** | ThinkJEPA 轨迹预测基线 | 建立统一参考 |
-| **MG** | 在轨迹读出头加入骨长、关节角、速度和加速度约束 | 改善输出的一致性 |
-| **KProj** | 对 B 的预测进行目标无关的骨长投影 | 区分学习约束与几何后处理的收益 |
+```text
+src/
+  predictor.py             多层 VLM guidance 与潜特征预测
+  models.py                轨迹读出头
+  losses.py                运动—几何一致性损失与权重调度
+  metrics.py               轨迹、几何与动态评测指标
+  kinematic_projection.py  预测序列骨长投影
+  topology.py              52 关节拓扑
+  vendor/                  predictor 必需的 4 个 V-JEPA2 支持模块
+evaluate.py                轨迹评测入口
+```
 
-MG 正则更新轨迹读出头；predictor 输出在进入读出路径前已 detach。KProj 使用预测序列自身的骨长统计，不读取未来真实关节。实现还包含 guidance 样本隔离、评估阶段 attention dropout 和指标定义的检查。
+本仓库发布核心算法实现，便于阅读和集成。特征提取、数据加载、完整 DDP 训练与 checkpoint 推理流程使用 [ThinkJEPA 上游工程](https://github.com/Hai-chao-Zhang/ThinkJEPA)；本仓库不提供完整训练复现包。
 
-## 实验结果
+### 轨迹评测
 
-**Direct32**：观察 32 帧，一次预测未来 32 帧、52 个关节。训练集 1,600 个样本，验证集 200 个样本、覆盖 13 类任务。下表为训练种子 42 / 43 / 44 的均值，所有指标越低越好。
+Python 3.10+：
+
+```sh
+pip install -r requirements.txt
+python evaluate.py --input trajectory.npz --kproj
+```
+
+输入文件包含 `prediction` 和 `target` 两个数组，形状均为 `[T, 52, 3]`，坐标单位为米、关节顺序见 `src/topology.py`。入口评估已有预测轨迹，不运行视频模型推理。零目标运动导致的未定义比值输出为 `null`。
+
+使用模型和损失模块时，另行安装与运行环境匹配的 PyTorch 和 timm。核心接口：
+
+```python
+from src.models import TrajectoryReadoutMLP
+from src.predictor import CortexGuidedVideoPredictor
+from src.losses import compute_motion_geometry_losses, get_physics_loss_weight_scale
+from src.metrics import compute_trajectory_metrics
+```
+
+### 训练设置
+
+归档实验使用缓存的预训练视觉与 VLM 特征，训练 predictor 与轨迹读出头。B 与 MG 采用相同数据、优化设置和 guidance 修正，checkpoint 按验证 ADE 选择。
+
+| 设置 | 取值 |
+| --- | --- |
+| 输入 / 预测 | 32 帧 / 32 帧，52 关节，步幅 1 |
+| 训练 / 验证 | 1,600 / 200 个样本 |
+| 训练种子 | 42、43、44 |
+| 训练周期 / 全局 batch | 100 epochs / 8（4 卡，每卡 2） |
+| MG 权重 | 骨长 0.0006，掌骨 0，速度 0.45，加速度 0.20，角度 0.0035 |
+| MG 调度 | 从 epoch 2 开始，3 epochs 线性 warmup，epoch 从 0 计数 |
+
+## 验证结果
+
+同一组 200 个验证样本、13 类任务，三个训练种子的均值；所有指标越低越好。
 
 | 指标 | B | KProj | MG |
 | --- | ---: | ---: | ---: |
@@ -31,51 +72,16 @@ MG 正则更新轨迹读出头；predictor 输出在进入读出路径前已 det
 | 速度偏差 · abs(log ratio) | 1.425 | 1.422 | **1.232** |
 | 加速度偏差 · abs(log ratio) | 2.122 | 2.120 | **1.906** |
 
-![Three-seed validation comparison](docs/assets/results.svg)
+![Three-seed comparison](docs/assets/results.svg)
 
-MG 在三个种子中均改善整体骨长、角度和动态一致性，但 ADE 仅在部分种子改善，FDE 均值上升。KProj 则以无需训练的后处理消除预测骨长的时间漂移。结果表明，一致性收益需要结合轨迹精度与具体指标共同评估。
+MG 的几何与动态一致性在三个种子中均改善；ADE 仅部分种子改善，FDE 均值上升。KProj 使用完整预测时域，是离线后处理。
 
-这些结果来自相同验证集上的三训练种子实验；独立最终测试、跨数据集泛化和机器人闭环控制尚未验证。逐样本指标、种子标准差及统计说明见 [实验数据](results/README.md)。
+上述结果是历史验证实验汇总，并非官方论文表格的直接复现成绩。独立最终测试、跨数据集泛化和机器人闭环控制尚未验证；MG 不向 predictor 传播梯度。速度与加速度偏差在逐样本层面进行 `abs(log ratio)` 变换；种子标准差如图所示。当前代码精简未重新训练模型。
 
-## 快速开始
+## 来源与许可
 
-仅复算公开结果，无需 GPU、模型权重或原始数据。使用 Python 3.10+：
+This software includes or is derived from **[ThinkJEPA](https://github.com/Hai-chao-Zhang/ThinkJEPA)**, originally developed at Northeastern University, NEU SMILE LAB by Haichao Zhang and Yun Raymond Fu. This is an independent, modified implementation, not an official ThinkJEPA release.
 
-```sh
-git clone https://github.com/unno11/thinkjepa-consistency-lab.git
-cd thinkjepa-consistency-lab
-python scripts/summarize_results.py
-```
+使用相关工作时请引用 [ThinkJEPA 论文](https://arxiv.org/abs/2603.22281)，引用条目见 [CITATION.bib](CITATION.bib)。本项目整理所依据的研究代码快照为 `0385f7057497a553f3094553f69aac68802572fe`；核心模型、损失和指标从该快照整理，导入路径按精简目录调整。
 
-脚本检查文件哈希、样本配对和重复基线的一致性，并从逐样本指标重算三种子汇总。`--write` 可更新汇总表。
-
-运行轻量检查和单元测试：
-
-```sh
-python -m pip install -r requirements-analysis.txt
-python scripts/check_release.py
-python -m unittest discover -s tests -v
-```
-
-训练与模型推理需要 PyTorch、匹配的运行环境及特征缓存。完整步骤见 [复现指南](docs/REPRODUCTION.md)，检查覆盖范围见 [验证说明](docs/VALIDATION.md)。
-
-## 代码导航
-
-| 目录 | 内容 |
-| --- | --- |
-| [`cache_train/`](cache_train/) | 缓存特征训练、predictor、轨迹读出与 MG 损失 |
-| [`evaluation/`](evaluation/) | Direct32 推理、轨迹指标、KProj 与对照分析 |
-| [`configs/`](configs/) | 训练配置、三种子评测协议与轻量验证配置 |
-| [`scripts/`](scripts/) | 训练入口、缓存检查、guidance 诊断与结果复算 |
-| [`results/`](results/) | 逐样本指标与三种子汇总 |
-| [`tests/`](tests/) | 指标、投影、配置、guidance 和损失测试 |
-
-`egodex/` 与 `vjepa2/` 仅保留当前路径所需的第三方组件及许可。原始特征提取、其他下游任务和完整预训练代码请参考上游项目。
-
-## 来源与引用
-
-This software includes or is derived from **[ThinkJEPA](https://github.com/Hai-chao-Zhang/ThinkJEPA)**, originally developed at Northeastern University, NEU SMILE LAB by Haichao Zhang and Yun Raymond Fu. This repository is an independent, modified research implementation, not an official ThinkJEPA release.
-
-使用相关工作时请引用 [ThinkJEPA 论文](https://arxiv.org/abs/2603.22281)。上游模型、训练框架与本项目扩展的来源见 [来源说明](docs/PROVENANCE.md)；引用条目见 [CITATION.bib](CITATION.bib)。
-
-保留 [LICENSE](LICENSE)、[NOTICE](NOTICE) 与第三方许可。根许可为 `LicenseRef-ThinkJEPA-Attribution`；第三方组件分别适用其目录中的许可。
+保留 [LICENSE](LICENSE)、[NOTICE](NOTICE) 及 [V-JEPA2 支持模块许可](src/vendor/LICENSE)。根许可为 `LicenseRef-ThinkJEPA-Attribution`；第三方组件适用各自许可。

@@ -1,1 +1,0 @@
-"""ThinkJEPA research protocol tests."""
