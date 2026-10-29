@@ -138,7 +138,7 @@ def _fingerprint(path: Path) -> str:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=REPO_ROOT / "configs" / "thinkjepa_baseline.json")
+    parser.add_argument("--config", type=Path, default=REPO_ROOT / "configs" / "thinkjepa_B_alllayers_100ep.json")
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--train-manifest", type=Path, required=True)
     parser.add_argument("--val-manifest", type=Path, required=True)

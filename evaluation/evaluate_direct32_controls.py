@@ -28,7 +28,7 @@ from evaluation.evaluate_naive_baselines import (
     last_pose,
 )
 from evaluation.metrics import compute_trajectory_metrics
-from evaluation.r32_protocol import sha256_file
+from evaluation.file_utils import sha256_file
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]

@@ -19,11 +19,11 @@ if __package__ in {None, ""}:
 
 from evaluation.direct32_protocol import load_protocol, resolve_validation
 from evaluation.guidance_contract import evaluate_guidance_contract
-from evaluation.r32_protocol import sha256_file
+from evaluation.file_utils import sha256_file
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PROTOCOL = REPO_ROOT / "configs" / "direct32_best_validation_protocol.json"
+DEFAULT_PROTOCOL = REPO_ROOT / "configs" / "direct32_B_MG_alllayers_gate0fixed_seed42_validation_v2.json"
 
 
 def _shape(value):

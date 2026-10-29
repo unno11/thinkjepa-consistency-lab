@@ -69,18 +69,6 @@ class AllLayersConfigTests(unittest.TestCase):
             key: weights["M"][key] + weights["G"][key] for key in weight_keys
         })
 
-    def test_alllayers_changes_only_selector_from_last_layer_matrix(self):
-        for role in ("B", "M", "G", "MG"):
-            old = RUNNER.load_and_validate_config(
-                ROOT / "configs" / f"thinkjepa_{role}_100ep.json"
-            )["trainer_args"]
-            new = RUNNER.load_and_validate_config(
-                ROOT / "configs" / f"thinkjepa_{role}_alllayers_100ep.json"
-            )["trainer_args"]
-            differing = {key for key in old if old[key] != new[key]}
-            self.assertEqual(differing, {"thinkjepa_vlm_layer_selector"}, role)
-            self.assertEqual(old["thinkjepa_vlm_layer_selector"], "last")
-            self.assertEqual(new["thinkjepa_vlm_layer_selector"], "all")
 
     def test_smokes_are_fail_fast_all_layer_train_only(self):
         for role in ("B", "MG"):

@@ -27,11 +27,11 @@ from evaluation.kinematic_projection import (
     load_projection_protocol,
     project_prediction_median_bone_lengths,
 )
-from evaluation.r32_protocol import sha256_file
+from evaluation.file_utils import sha256_file
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PROTOCOL = REPO_ROOT / "configs" / "direct32_best_validation_protocol.json"
+DEFAULT_PROTOCOL = REPO_ROOT / "configs" / "direct32_B_MG_alllayers_gate0fixed_seed42_validation_v2.json"
 DEFAULT_PROJECTION_PROTOCOL = (
     REPO_ROOT / "configs" / "kinematic_projection_control_v1.json"
 )

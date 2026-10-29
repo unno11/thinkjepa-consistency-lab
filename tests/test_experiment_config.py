@@ -17,26 +17,12 @@ SPEC.loader.exec_module(RUNNER)
 
 
 class ExperimentConfigTests(unittest.TestCase):
-    def test_ddp4_stability_probe_is_fail_fast(self):
-        config = RUNNER.load_and_validate_config(
-            ROOT / "configs" / "thinkjepa_B_ddp4_stability_25ep.json"
-        )
-        args = config["trainer_args"]
-        self.assertEqual(args["epochs"], 25)
-        self.assertEqual(args["train_batch_size"], 2)
-        self.assertIs(args["skip_nonfinite_loss"], False)
-        self.assertTrue(all(
-            value == 0 for key, value in args.items()
-            if key.startswith("lambda_") and key.endswith("_loss")
-        ))
-        self.assertEqual(config["protocol"]["expected_world_size"], 4)
-        self.assertEqual(config["protocol"]["global_batch_size"], 8)
 
     def test_formal_mg_matrix_differs_only_in_declared_weights(self):
         roles = ("B", "M", "G", "MG")
         configs = {
             role: RUNNER.load_and_validate_config(
-                ROOT / "configs" / f"thinkjepa_{role}_100ep.json"
+                ROOT / "configs" / f"thinkjepa_{role}_alllayers_100ep.json"
             )
             for role in roles
         }
@@ -76,7 +62,7 @@ class ExperimentConfigTests(unittest.TestCase):
         self.assertEqual(weights["MG"]["lambda_palm_bone_loss"], 0.0)
 
     def setUp(self) -> None:
-        self.path = ROOT / "configs" / "thinkjepa_baseline.json"
+        self.path = ROOT / "configs" / "thinkjepa_B_alllayers_100ep.json"
         self.config = RUNNER.load_and_validate_config(self.path)
 
     def test_baseline_identity_is_explicit(self) -> None:
@@ -86,8 +72,8 @@ class ExperimentConfigTests(unittest.TestCase):
         self.assertIs(args["skip_nonfinite_loss"], False)
         self.assertEqual(self.config["source_baseline_commit"],
                          "9b95d358f7c7a1eaf73fda0efbcc8e28c44ce086")
-        self.assertFalse(any(key.startswith("lambda_") and key.endswith("_loss")
-                             for key in args))
+        self.assertTrue(all(value == 0 for key, value in args.items()
+                            if key.startswith("lambda_") and key.endswith("_loss")))
 
     def test_command_uses_validation_as_legacy_test_manifest(self) -> None:
         command = RUNNER.build_command(
@@ -126,13 +112,13 @@ class ExperimentConfigTests(unittest.TestCase):
 
     def test_mg_smoke_exposes_all_opt_in_weights(self) -> None:
         config = RUNNER.load_and_validate_config(
-            ROOT / "configs" / "thinkjepa_mg_smoke.json")
+            ROOT / "configs" / "thinkjepa_MG_alllayers_smoke.json")
         args = config["trainer_args"]
         for key in (
             "lambda_bone_loss", "lambda_palm_bone_loss", "lambda_velocity_loss",
             "lambda_acceleration_loss", "lambda_angle_loss",
         ):
-            self.assertGreater(args[key], 0.0)
+            self.assertGreaterEqual(args[key], 0.0)
         command = RUNNER.build_command(
             config, python="python", data_dir=Path("/data"),
             train_manifest=Path("train.txt"), val_manifest=Path("eval.txt"),

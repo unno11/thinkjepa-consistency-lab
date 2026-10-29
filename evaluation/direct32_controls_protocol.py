@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .r32_protocol import sha256_file
+from .file_utils import sha256_file
 
 
 EXPECTED_WINDOW = {

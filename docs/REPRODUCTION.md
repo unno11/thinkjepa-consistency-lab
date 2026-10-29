@@ -4,13 +4,13 @@
 
 ## 环境与数据
 
-轻量指标和配置检查只需 Python 3.10+ 与 NumPy。训练需按硬件安装匹配的 PyTorch、torchvision、torchaudio，然后安装 `requirements-public.txt`；完整缓存提取还需单独的 Qwen3-VL 环境与 `requirements-extraction.txt`。具体上游环境请参考 [ThinkJEPA](https://github.com/Hai-chao-Zhang/ThinkJEPA)。未验证的硬件组合不保证直接运行。
+轻量指标和配置检查只需 Python 3.10+ 与 NumPy。训练需按硬件安装匹配的 PyTorch、torchvision、torchaudio，然后安装 `requirements-public.txt`。本仓库聚焦缓存特征训练；从原始视频提取特征请使用上游完整实现。具体上游环境请参考 [ThinkJEPA](https://github.com/Hai-chao-Zhang/ThinkJEPA)。未验证的硬件组合不保证直接运行。
 
 数据和缓存来自 [上游缓存页面](https://huggingface.co/datasets/haichaozhang/cache)。本仓库不分发视频、缓存、权重或未来真实关节轨迹。提供的是精确训练／验证成员的相对文件名和归档评测指标；使用上游最新缓存并不保证与冻结缓存完全相同，应核对层索引和命名约定。
 
 将本机缓存组织为 `DATA_ROOT/cache/part2/...npz`。protocol/splits 中的路径形如 `data/cache/part2/...npz`，加载器会在数据根目录下解析。公开的冻结成员为 train 1600、validation 200；最终测试成员不包含在发布中。
 
-## 先查看训练命令
+## 模型训练
 
 默认只打印参数和配置，不启动训练：
 
@@ -47,6 +47,6 @@ MG 改为 `--role MG`，提供匹配 checkpoint 并去掉 KProj 开关。seed43�
 
 未来相机外参仅用于坐标变换；未来真实关节不作为投影输入。该评测并非部署时只接收机器人实时观测的控制协议。
 
-## 不下载权重也能核对什么
+## 结果复算范围
 
 运行 `python scripts/summarize_results.py` 可从公开 CSV 核对三种子描述性结果。原始预测与目标关节数组未分发，因此该步骤不能重新计算每条轨迹的底层几何指标；它检查的是保存指标的配对、变换和汇总。独立底层指标实现见 `evaluation/metrics.py`，需要实际预测轨迹才能重新评估。
