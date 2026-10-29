@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "thinkjepa_r32_leak_free_v1",
+  "source_baseline_commit": "9b95d358f7c7a1eaf73fda0efbcc8e28c44ce086",
+  "rollout": {
+    "past_frames": 4,
+    "step_future_frames": 4,
+    "steps": 8,
+    "horizons": [4, 8, 16, 32],
+    "temporal_stride": 1,
+    "joint_count": 52,
+    "predictor": "thinkjepa",
+    "trajmode": "traj",
+    "joint_pred": true,
+    "ref_mode": "none",
+    "inference_amp": false,
+    "vlm_guidance_policy": "disabled_no_causal_cache",
+    "future_camera_extrinsics": "coordinate_transform_only"
+  },
+  "splits": {
+    "validation": {
+      "manifest": "protocol/splits/val.txt",
+      "sha256": "82f237a5acbd99f078dd1dd8675bf66b041d0ce56c885a3141817d8ece401b15",
+      "expected_samples": 200,
+      "selection_allowed": true
+    },
+    "final-test": {
+      "manifest": "protocol/splits/test.txt",
+      "sha256": "46c4a1d21ee972a9b802f9d92dbb52bf8910370b79233986c4d6c628c92cf69a",
+      "expected_samples": 200,
+      "selection_allowed": false,
+      "locked": true,
+      "confirmation": "RUN_LOCKED_FINAL_TEST_ONCE",
+      "access_record": "protocol/final_test_access_record.json"
+    }
+  },
+  "metrics": {
+    "implementation": "evaluation.metrics.compute_trajectory_metrics",
+    "per_sample": true,
+    "aggregate": "unweighted_mean_over_samples",
+    "primary_spatial": ["ADE_m", "FDE_m"],
+    "primary_physics": [
+      "AngleError_deg",
+      "BoneErrorAll_mm",
+      "BoneDriftAll_mm2",
+      "VelocityRatio",
+      "AccelerationRatio"
+    ],
+    "controls": ["LastPose", "ConstVelocityK4"]
+  },
+  "leakage_guards": {
+    "explicit_manifest_required": true,
+    "future_ground_truth_joint_reference_forbidden": true,
+    "noncausal_vlm_guidance_forbidden": true,
+    "batch_skip_forbidden": true,
+    "nonfinite_prediction_fails": true,
+    "test_checkpoint_selection_forbidden": true
+  }
+}

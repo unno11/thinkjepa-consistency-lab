@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="400" viewBox="0 0 1160 400" role="img" aria-labelledby="title desc">
+<title id="title">ThinkJEPA consistency extension and gradient scope</title><desc id="desc">Cached visual and semantic features feed a predictor. Its detached output feeds a trajectory readout. Motion geometry regularization updates the readout, not the predictor.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#5D737C"/></marker></defs>
+<rect width="1160" height="400" rx="18" fill="#F5F8F7"/>
+<text x="40" y="43" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#15383A">ThinkJEPA Consistency Lab</text>
+<text x="40" y="70" font-family="Arial,sans-serif" font-size="15" fill="#52646C">Direct32 trajectory prediction · frozen pretrained feature caches · trained predictor and readout</text>
+<g font-family="Arial,sans-serif" font-size="17" fill="#243B45" text-anchor="middle">
+<rect x="40" y="110" width="225" height="65" rx="10" fill="#E3EBF2"/><text x="152" y="138">V-JEPA visual cache</text><text x="152" y="160" font-size="13">observation-window features</text>
+<rect x="40" y="205" width="225" height="65" rx="10" fill="#E3EBF2"/><text x="152" y="233">VLM guidance cache</text><text x="152" y="255" font-size="13">all-layer, sample-isolated</text>
+<rect x="340" y="151" width="200" height="82" rx="10" fill="#DCE9E7"/><text x="440" y="185">ThinkJEPA predictor</text><text x="440" y="208" font-size="13">original prediction objective</text>
+<rect x="670" y="151" width="190" height="82" rx="10" fill="#C7E9DC"/><text x="765" y="185">Trajectory readout</text><text x="765" y="208" font-size="13">32 future frames × 52 joints</text>
+<rect x="935" y="151" width="185" height="82" rx="10" fill="#E3EBF2"/><text x="1027" y="185">World coordinates</text><text x="1027" y="208" font-size="13">B / MG predictions</text>
+<rect x="650" y="302" width="255" height="56" rx="10" fill="#C7E9DC"/><text x="777" y="326">Motion + geometry losses</text><text x="777" y="346" font-size="13">bone · angle · velocity · acceleration</text>
+</g>
+<g fill="none" stroke="#5D737C" stroke-width="2" marker-end="url(#arrow)"><path d="M265 142L305 142L305 177L340 177"/><path d="M265 237L305 237L305 209L340 209"/><path d="M540 192H670"/><path d="M860 192H935"/><path d="M1027 233V330H905"/></g>
+<path d="M765 302V238" stroke="#25856D" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="604" y="172" font-family="Arial,sans-serif" font-size="14" fill="#A34C35" text-anchor="middle">detach</text>
+<path d="M603 182V204" stroke="#A34C35" stroke-width="3"/>
+<text x="40" y="340" font-family="Arial,sans-serif" font-size="14" fill="#52646C">MG gradients affect the readout only.</text>
+<text x="40" y="364" font-family="Arial,sans-serif" font-size="14" fill="#52646C">KProj: target-free post-processing of B predictions.</text>
+</svg>

@@ -1,0 +1,796 @@
+{
+  "source_repository": "https://github.com/Hai-chao-Zhang/ThinkJEPA",
+  "baseline_commit": "9b95d358f7c7a1eaf73fda0efbcc8e28c44ce086",
+  "research_snapshot_commit": "0385f7057497a553f3094553f69aac68802572fe",
+  "files": [
+    {
+      "path": "CITATION.bib",
+      "source_sha256": "d0de35762c05c5a8aad6f50ccb8cb8313c08e4cbf91fedc227ce18760f86d210"
+    },
+    {
+      "path": "LICENSE",
+      "source_sha256": "90e1cae3c7812ad5268f044521b999b428117fa791f60e16543d7b2f69366d5a"
+    },
+    {
+      "path": "NOTICE",
+      "source_sha256": "72c56a399c70b2e75e99f67bd243d5ea5ee8c606faf45aa36aff56582daca297"
+    },
+    {
+      "path": "cache_train/__init__.py",
+      "source_sha256": "062b0b343fbe67b4b4e7286dbddad5f6ad45d871f88391448f26a02f9b43c8ee"
+    },
+    {
+      "path": "cache_train/build_video_cache_splits.py",
+      "source_sha256": "120785f8d5d642eeed08393ea8a0cca6dc1b04b2e0444e107d5cd1139335980d"
+    },
+    {
+      "path": "cache_train/checkpoint_paths.py",
+      "source_sha256": "1977d7506438ca17b6f60d30ab20a57607db2ffa798332fba7487da66c60d1ad"
+    },
+    {
+      "path": "cache_train/generate_egodex_split_manifest.py",
+      "source_sha256": "475e40f4585c5deb444e9234dacc7a842e40272a23da1a7c45e97d8d6cc0fe72"
+    },
+    {
+      "path": "cache_train/hand_skeleton_consts.py",
+      "source_sha256": "b86a738a81853e62d8936acd55d0c0229af9c82d6408ee33e815694d7907363c"
+    },
+    {
+      "path": "cache_train/hf_egodex.py",
+      "source_sha256": "2139efda1c5f3e532e299705dc4407d9ed7e0eb21db1e4fdb8620e1266d46808"
+    },
+    {
+      "path": "cache_train/models.py",
+      "source_sha256": "f06c3b82bb22e7d37b5f96c69ecd3e0f2b2947e704e358122a07ca1872b8d721"
+    },
+    {
+      "path": "cache_train/physics_losses.py",
+      "source_sha256": "f1813f06da604823a6defdab8ae3330a2d1ec2ac6810194dee9d7cfff7d69be7"
+    },
+    {
+      "path": "cache_train/predictor.py",
+      "source_sha256": "9079312efe18bf778145363a199cb1655ac7a8b7d407e35071fada6fcccc19a8"
+    },
+    {
+      "path": "cache_train/qwen3_cache_extractor.py",
+      "source_sha256": "05f52681a6c31ca29f9ef7cfbbe2cf0408efe950960b214d881101c3069471f2"
+    },
+    {
+      "path": "cache_train/qwen3_parallel_cache_extractor.py",
+      "source_sha256": "cf671f9929cb9c7394075110fc4ed737902014d74f8374d349ade5da5f07d281"
+    },
+    {
+      "path": "cache_train/run_main_egodex_suite.py",
+      "source_sha256": "571a0bfc02f96795a32c3c5ea46fb7181c1a30d01304d0cd5da50c2bafca8915"
+    },
+    {
+      "path": "cache_train/thinker_predictor.py",
+      "source_sha256": "afa86ac9d2a0598d072d28493eafbc3575312cbac5b0780f555992ec51edc0b7"
+    },
+    {
+      "path": "cache_train/thinker_train.py",
+      "source_sha256": "22e7ca49ebd4a5e048f0790cd19b279ca06074637e23c78bb9f9ae9e466b8406"
+    },
+    {
+      "path": "cache_train/video_observation_adapter.py",
+      "source_sha256": "b4862c19ad2a0d8bb94c3db4ad58f0056bb761f34c8f2c4cd2980b1d86c87392"
+    },
+    {
+      "path": "configs/direct32_B_MG_alllayers_gate0fixed_seed42_validation_v2.json",
+      "source_sha256": "47675d8dc2f639b1eac5af87cd8e10e4b7d4bc1dfad4460bf9f2033aa27d8f8b"
+    },
+    {
+      "path": "configs/direct32_B_MG_alllayers_gate0fixed_seed43_validation_v1.json",
+      "source_sha256": "679abac3f22820f805d2e551ccddf8d886207bd4167c20359c4743efa4e34605"
+    },
+    {
+      "path": "configs/direct32_B_MG_alllayers_gate0fixed_seed44_validation_v1.json",
+      "source_sha256": "0cd227e67ea0ab7ec6ab8f47f078f6c9820746118a27a4079658b507e99011de"
+    },
+    {
+      "path": "configs/direct32_B_MG_alllayers_gate0fixed_validation_v1.json",
+      "source_sha256": "0f4ab729087dff7eff27be6758dd7e5e6fe938c3f2a410178bf70f4ba317362d"
+    },
+    {
+      "path": "configs/direct32_B_alllayers_gate0fixed_validation_v1.json",
+      "source_sha256": "6eb7cf7cd5a93348d9fe288b88b00ef764a8eda83f3c5110cc7f9d86cc72c16e"
+    },
+    {
+      "path": "configs/direct32_best_validation_protocol.json",
+      "source_sha256": "cecf0ca8247175a793e907a3f9d1de72872747f6ac3d84f5d16a8c60b098412b"
+    },
+    {
+      "path": "configs/direct32_naive_controls_validation_v1.json",
+      "source_sha256": "64861e1984f52031085a0b4d8dc049a001444a0f7950111f3801cda749e51778"
+    },
+    {
+      "path": "configs/kinematic_projection_control_v1.json",
+      "source_sha256": "37930395eeb85037f3febecbbef2d8521d964118bbc409c9154ff02a41cc3576"
+    },
+    {
+      "path": "configs/r32_evaluation_protocol.json",
+      "source_sha256": "169492ae55afe4c76ea2326737054dc169619fdc2f0dde3f1d1cfd077a56459e"
+    },
+    {
+      "path": "configs/thinkjepa_B_100ep.json",
+      "source_sha256": "742015ccf9cd87d9ccd8ca3d9ed77032468e3efd032c8705738b7fd091990352"
+    },
+    {
+      "path": "configs/thinkjepa_B_alllayers_100ep.json",
+      "source_sha256": "e612575d1b50b2d1eda40dfe7667c48147dbaa5a10d703aec33d98c5b808c2bd"
+    },
+    {
+      "path": "configs/thinkjepa_B_alllayers_100ep_seed43.json",
+      "source_sha256": "399551d0be3022be7099d86bf91d265f1cad350ceed76d78308ae908d692237f"
+    },
+    {
+      "path": "configs/thinkjepa_B_alllayers_100ep_seed44.json",
+      "source_sha256": "b1900f1922c2c1324350e51613c2be447bcfa535d46c8f03c2c2cf8360089216"
+    },
+    {
+      "path": "configs/thinkjepa_B_alllayers_smoke.json",
+      "source_sha256": "026414e6ff59e7f4e84249cdbcdc74eeb639f48870c2925f8440a77e78108d9f"
+    },
+    {
+      "path": "configs/thinkjepa_B_ddp4_stability_25ep.json",
+      "source_sha256": "8408f370b173850c2da6445563ca12603135c9feb15a7d878e303e13b8938970"
+    },
+    {
+      "path": "configs/thinkjepa_G_100ep.json",
+      "source_sha256": "e8713054d07ed06b51b79922b2c43b605044ed0bd5d27282be30a12ba76f5f86"
+    },
+    {
+      "path": "configs/thinkjepa_G_alllayers_100ep.json",
+      "source_sha256": "eb416e51cebb0ebbfd260826e194b617c25432944690f59f3eaf6ef5c8d44534"
+    },
+    {
+      "path": "configs/thinkjepa_MG_100ep.json",
+      "source_sha256": "e04cb360290afc019a7eae21c0fc0332832c3897654f768fb2fc331f986007a6"
+    },
+    {
+      "path": "configs/thinkjepa_MG_alllayers_100ep.json",
+      "source_sha256": "2238b183ec9febfeaca3f8dd70a05f37f97a46fadc59beb63c35dda8ff7fc5f4"
+    },
+    {
+      "path": "configs/thinkjepa_MG_alllayers_100ep_seed43.json",
+      "source_sha256": "c17a0ba40d647af5d05eaa24436f9d181edcda962a53e2d750c368e1b7d0100f"
+    },
+    {
+      "path": "configs/thinkjepa_MG_alllayers_100ep_seed44.json",
+      "source_sha256": "17efd9a5a38db53346e721b26cbd206ca3112b4620b098e9dea46b6cf2da5576"
+    },
+    {
+      "path": "configs/thinkjepa_MG_alllayers_smoke.json",
+      "source_sha256": "a7b20cd8285952c6eb7134e8d073e7f632868dd6095a95181d6737312825d914"
+    },
+    {
+      "path": "configs/thinkjepa_M_100ep.json",
+      "source_sha256": "c9d8cda2982d0a433ca088cfd403af2333db23d68aad92381b0e63301c73209f"
+    },
+    {
+      "path": "configs/thinkjepa_M_alllayers_100ep.json",
+      "source_sha256": "d149cad38e6b3b077906dab2f7b5c7e38b5014dcb03c14f24c846f1242305641"
+    },
+    {
+      "path": "configs/thinkjepa_baseline.json",
+      "source_sha256": "133c075cc0ae2d302e93a33b2f3ec656c594c2d40a5fe4dd60558a86f08a418c"
+    },
+    {
+      "path": "configs/thinkjepa_baseline_smoke.json",
+      "source_sha256": "c2f4763ca8b698b65105e50297a1cd9ce0bfc19032684d2dae048795956b4197"
+    },
+    {
+      "path": "configs/thinkjepa_mg_smoke.json",
+      "source_sha256": "2e82ce7558dde509fd300e6e7ac11989685d2bcb3611f926507e746457ac77e9"
+    },
+    {
+      "path": "docs/BASELINE_DEFINITION.md",
+      "source_sha256": "0eb21b1ab48ac0250a6590848360a18054086482759bae9cb1993c536bca1bf6"
+    },
+    {
+      "path": "docs/DIRECT32_CONTEXT_CONTROLS.md",
+      "source_sha256": "d30a1a14adff00c345290458319b7e4e339636a480e05e48dd8ba574d43fd18e"
+    },
+    {
+      "path": "docs/GATE0_GUIDANCE_SEMANTICS.md",
+      "source_sha256": "555966d3af09cc0a237c6719fc74339e4f58f4e78b4612a45f0cc8e2c8925445"
+    },
+    {
+      "path": "docs/KINEMATIC_PROJECTION_CONTROL.md",
+      "source_sha256": "7c30e0fbdef85f7bf5ea8eeee5bbb4ad0bf70c64d773379131fd0879628a3772"
+    },
+    {
+      "path": "docs/MG_INTEGRATION.md",
+      "source_sha256": "fac9b59606eea430529d5dc8135cbec349f8c2963ac4edb2a9df9c4074f1053b"
+    },
+    {
+      "path": "docs/PHYSICS_LOSSES_REVIEW.md",
+      "source_sha256": "f96527086850f0c3ac79bc368ab826fefef20d6b49efc1ffb277426ed13af76f"
+    },
+    {
+      "path": "egodex/ACKNOWLEDGEMENTS.txt",
+      "source_sha256": "a259319bf376909f911ebc8013ba403402e2f37469305ba36b2b9293d263da19"
+    },
+    {
+      "path": "egodex/LICENSE.txt",
+      "source_sha256": "c3c4e966e55fd5e7958d60a2445bc3f7211adb5de5ece6028454d6baedc7173d"
+    },
+    {
+      "path": "egodex/__init__.py",
+      "source_sha256": "f8f7762c012cbd27b09e0a6b26912e36f5b901a05edec869d711eafdb98e7b32"
+    },
+    {
+      "path": "egodex/trajectory_dataset.py",
+      "source_sha256": "cf58b3dc6a751586f2752be6e2bb50681ea8bca804162215620d947e51023d66"
+    },
+    {
+      "path": "egodex/utils/ACKNOWLEDGEMENTS.txt",
+      "source_sha256": "a259319bf376909f911ebc8013ba403402e2f37469305ba36b2b9293d263da19"
+    },
+    {
+      "path": "egodex/utils/LICENSE.txt",
+      "source_sha256": "c3c4e966e55fd5e7958d60a2445bc3f7211adb5de5ece6028454d6baedc7173d"
+    },
+    {
+      "path": "egodex/utils/__init__.py",
+      "source_sha256": "246d04fbee2be833d05fcf858f4804d06755ca77e57ef140d335720a0f569816"
+    },
+    {
+      "path": "egodex/utils/draw_utils.py",
+      "source_sha256": "7e29dd7eeff93450994105bbc6a153fe28bfa15ec48dff07ba21ba1852716e08"
+    },
+    {
+      "path": "egodex/utils/skeleton_tfs.py",
+      "source_sha256": "b5bd6d896f27432828978602af8a951c05e7c2149d21664d2cdc79e13b38c67e"
+    },
+    {
+      "path": "egodex/utils/trajectory_data_utils.py",
+      "source_sha256": "b83d28d1dcb1c15de8762f50bba77071f24dec55b25a0eb79b6f78db23239bb9"
+    },
+    {
+      "path": "egodex/visualize_2d.py",
+      "source_sha256": "b476ab4366d7379326ff96836b610524e8a82c9bd5dc6166b869eeb1f19fbb7c"
+    },
+    {
+      "path": "evaluation/__init__.py",
+      "source_sha256": "f4d7a08fe94d2d66dbf0c915e162a0593258eea067a8e107a4ef93ea34cb73ed"
+    },
+    {
+      "path": "evaluation/aggregate_kinematic_control_multiseed.py",
+      "source_sha256": "71954e6932708d45fa06fe46a1083523565b6e70ba481ed57cfa3722d4ed7cbd"
+    },
+    {
+      "path": "evaluation/aggregate_multiseed_direct32.py",
+      "source_sha256": "d032dfbab55a98dafc7b4cc28daada6b448d5ec5d9836a9ad04925b6e297bec8"
+    },
+    {
+      "path": "evaluation/compare_direct32.py",
+      "source_sha256": "60c2a3cd59a1e0f7c6172d08661bd6f8226a7d6f29297cbf7fe3dfcc4f0c9d56"
+    },
+    {
+      "path": "evaluation/compare_direct32_controls_multiseed.py",
+      "source_sha256": "ae1b2852ffd154a1785e0bbdf37c3b7adf79138f268b85a5debafd16ca2a4e48"
+    },
+    {
+      "path": "evaluation/compare_kinematic_projection.py",
+      "source_sha256": "9f13968854525486d5845766fe487dfffd2077da038746cc23671b8683f93492"
+    },
+    {
+      "path": "evaluation/direct32_controls_protocol.py",
+      "source_sha256": "492aed917c794af19747f18083d58490865abc5637cb745a3b10823242c31d05"
+    },
+    {
+      "path": "evaluation/direct32_protocol.py",
+      "source_sha256": "49e22e4294801f4d242cdfe2bf3dc0e13ccff9352146ceed5e4d66d935e0387e"
+    },
+    {
+      "path": "evaluation/evaluate_direct32.py",
+      "source_sha256": "434a20f6e49e68127c650f4107d5af83eab64f99a9a336053d3bfd9050f2ee59"
+    },
+    {
+      "path": "evaluation/evaluate_direct32_controls.py",
+      "source_sha256": "d493be6be1e1b6f33c0a4dd41f30cc1afd0b87863f65b086b24f3a8edd9bf630"
+    },
+    {
+      "path": "evaluation/evaluate_naive_baselines.py",
+      "source_sha256": "b109accf2fb18ba424fca8efb3ea5aabcc88803685a73361f7bec88d1ab5dab0"
+    },
+    {
+      "path": "evaluation/evaluate_r32.py",
+      "source_sha256": "738c21600488bd53dfdc8e5715a635dbdc4bfd2d46c192bbe0235ecce2b346a2"
+    },
+    {
+      "path": "evaluation/guidance_contract.py",
+      "source_sha256": "9e93e06a60f99908f5517aba9974888cf9baaf80c832ebb1bbcdde7bd398442f"
+    },
+    {
+      "path": "evaluation/kinematic_projection.py",
+      "source_sha256": "e6d9baf4ee36fc9c52f1db74ca176e4aa533099ceafc110763f0efd92e565a38"
+    },
+    {
+      "path": "evaluation/metrics.py",
+      "source_sha256": "5a65d9547cf1ccdb01bdc6378f2b7820b5070af3794f4d976fc5064a4b54ef35"
+    },
+    {
+      "path": "evaluation/r32_protocol.py",
+      "source_sha256": "74fe238f715e0dc364508829c798a20b8cf041288cfaf03d5cbd1f0002b76b3d"
+    },
+    {
+      "path": "evaluation/topology.py",
+      "source_sha256": "7c9ec7187ebc9a1404272639d4ecc26c42fe73ed987d494a5a2414c36732cf07"
+    },
+    {
+      "path": "protocol/splits/train.txt",
+      "source_sha256": "ceec4fad0984e31c0eb241b4b9dfdcb00e78a97a3af5f258c6605cf94fedec8e"
+    },
+    {
+      "path": "protocol/splits/val.txt",
+      "source_sha256": "82f237a5acbd99f078dd1dd8675bf66b041d0ce56c885a3141817d8ece401b15"
+    },
+    {
+      "path": "requirements-extraction.txt",
+      "source_sha256": "8f95ee216f6a113888b0aaf7fa453f379e21f91f31b30d090eada1d0f67b75fd"
+    },
+    {
+      "path": "requirements-public.txt",
+      "source_sha256": "fe2d7c8abe4ff4578a76f91a1e35e0c89e9522fd088703a246a25703b7cc4019"
+    },
+    {
+      "path": "scripts/preflight_alllayers_cache.py",
+      "source_sha256": "07baf1f42c05e47f0e39bd1a1e0dd8bb64d04a15dba87c2faed889dce2069553"
+    },
+    {
+      "path": "scripts/run_experiment.py",
+      "source_sha256": "8aea957ebe1cb3220f3155efc9ed34284de898f9d3e3ac083632d9a95d96fe3a"
+    },
+    {
+      "path": "scripts/validate_manifests.py",
+      "source_sha256": "1f12d2d2040902ac1de98ad06ccdedb552580460e833bb3108dc084bfaf5e598"
+    },
+    {
+      "path": "tests/__init__.py",
+      "source_sha256": "aba8490c22a7a9c0d9fc8eaa71be87d93c1a73c1dde9e541d607a14bae742079"
+    },
+    {
+      "path": "tests/test_aggregate_kinematic_control.py",
+      "source_sha256": "4739b33a126f3f2524482e7a9368b7589a9d506495938d1125594b585f1d2cf7"
+    },
+    {
+      "path": "tests/test_aggregate_multiseed_direct32.py",
+      "source_sha256": "5040c896891ca1252cfbcd9a38b921c3659d100b01921407fc7b9b3a106a613e"
+    },
+    {
+      "path": "tests/test_alllayers_preflight.py",
+      "source_sha256": "528a734db6ce11ca71a02a7df7e3c94e0d25a808e1160ae8c7c861c015bbf6e9"
+    },
+    {
+      "path": "tests/test_attention_eval_semantics.py",
+      "source_sha256": "f6089e606d16af83fa6f83a40b11e015b02a31373072e1df3af0def0ea493af1"
+    },
+    {
+      "path": "tests/test_cached_mode_imports.py",
+      "source_sha256": "cb9a1c97b22ef854ebe48a24071d0849b7489e7f52385273883b6ec8545064c2"
+    },
+    {
+      "path": "tests/test_compare_direct32.py",
+      "source_sha256": "51587fed5867ceb3b2bb024e433a12061c133176127185f86cb68d68195837f1"
+    },
+    {
+      "path": "tests/test_direct32_controls.py",
+      "source_sha256": "870e81b63993fdaa6cc8890341de7522eef5c75f0c0962c3ce02e9069f8796b0"
+    },
+    {
+      "path": "tests/test_direct32_protocol.py",
+      "source_sha256": "4487ea6ce7ebadd7acd2b8ae71196ed02184ab8a11985852d42f2feda5054944"
+    },
+    {
+      "path": "tests/test_evaluation_metrics.py",
+      "source_sha256": "af064217656f3719ce42501ee0b45a560e13df34ff659039f67dba461f267bb8"
+    },
+    {
+      "path": "tests/test_experiment_config.py",
+      "source_sha256": "b3ba51b92410119cbc0d39252bc35e1e3676156b0dba1d5d06ea3ad9163e55b9"
+    },
+    {
+      "path": "tests/test_guidance_contract.py",
+      "source_sha256": "0d713c1a763764ee5b1bb778e7a0b0cb5d01818a12fb178eb7edb31c4954dd04"
+    },
+    {
+      "path": "tests/test_guidance_semantics_torch.py",
+      "source_sha256": "23b55e5624a52039ec53f6eb4fed2c6ca3621d28b2fac46e00a179b8d3d4a282"
+    },
+    {
+      "path": "tests/test_kinematic_projection.py",
+      "source_sha256": "06a1a651ff90a12a88cfb8fc9fd2f5600abc833f3fd0435ecb4e12973438b695"
+    },
+    {
+      "path": "tests/test_manifests.py",
+      "source_sha256": "e79621cee80a22324e88566db85a834e77661ebf6c881982630ad675a5680244"
+    },
+    {
+      "path": "tests/test_physics_losses.py",
+      "source_sha256": "1ee446cbdd063ea30a5f47eb65b34fdd8df0c4acd309c537a0bfdef26fa7ba60"
+    },
+    {
+      "path": "tests/test_r32_protocol.py",
+      "source_sha256": "e103efc7fb8aac164d157cb55c7c6660b3d6e808870682a2c08c3ccf82d4de98"
+    },
+    {
+      "path": "vjepa2/.flake8",
+      "source_sha256": "87e7fa40dfb0cd0099ab1af07fd0589c0be7c4f33fe05cf59e49abff8cb6b996"
+    },
+    {
+      "path": "vjepa2/.github/workflows/base_tests.yaml",
+      "source_sha256": "4dcc82cb616a07a4fa7cc7b4dc3652f4a118384b0b1507014b3f3406af30cad0"
+    },
+    {
+      "path": "vjepa2/.github/workflows/linters.yaml",
+      "source_sha256": "467a8d835ca6e7009de9cd876e3ad3a8b8b4259831a7ab614fdc3d0489ae2452"
+    },
+    {
+      "path": "vjepa2/APACHE-LICENSE",
+      "source_sha256": "7819c9898149003206afe2a776a52e4b9d41bc785ab4d515e73b821f04a4a06d"
+    },
+    {
+      "path": "vjepa2/CHANGELOG.md",
+      "source_sha256": "c4f96cbb008a208acec089b06fd2faf3f7ed53635fee3e3db96ee20ce582eb13"
+    },
+    {
+      "path": "vjepa2/CODE_OF_CONDUCT.md",
+      "source_sha256": "2bc1cbfe9b61779523e8863986f2b78a765cfa1ddc2ddd212de4204986211942"
+    },
+    {
+      "path": "vjepa2/CONTRIBUTING.md",
+      "source_sha256": "0ab5e8db8b182a969643610fa4f915eb0598c3934b13d48a8854498ebc138e6e"
+    },
+    {
+      "path": "vjepa2/LICENSE",
+      "source_sha256": "98d5cea9c8ead20362a25feca7268effc2dd31baabdfe45c20d09020ab41e7b4"
+    },
+    {
+      "path": "vjepa2/README.md",
+      "source_sha256": "fa0f633329617fdac6f9da4164b2b7390aa4d80a38c7073c6806631c98029a7a"
+    },
+    {
+      "path": "vjepa2/app/main.py",
+      "source_sha256": "a8f6290509136745c2d404e078f150faf75516596f90c4c333eb40328d6e2e50"
+    },
+    {
+      "path": "vjepa2/app/main_distributed.py",
+      "source_sha256": "33a5a88a794a0791ff0f25e425a4d7d37d48718a95e3f87176d5d74662074357"
+    },
+    {
+      "path": "vjepa2/app/scaffold.py",
+      "source_sha256": "01040a0ca98a9227662be2a11e6cfcdbe83e5f04c13d5f888ddfc5b92da24788"
+    },
+    {
+      "path": "vjepa2/app/vjepa/train.py",
+      "source_sha256": "abd6431069d541c96b9b31ec05fce954664c56d2d4ca6d67bb4c9e2ddd775a5f"
+    },
+    {
+      "path": "vjepa2/app/vjepa/transforms.py",
+      "source_sha256": "0b991236a649991a0a44534ca83b98d72e8124ab7c924899ad50624027895f81"
+    },
+    {
+      "path": "vjepa2/app/vjepa/utils.py",
+      "source_sha256": "9deea46704edd95f7be262bf4f0ffbac6b7a24162992ed057cb80da3438e8de3"
+    },
+    {
+      "path": "vjepa2/assets/flowchart.png",
+      "source_sha256": "4ccdc6940de06998cd4a692eb683d306d4e68b97be6f7576e6c142ec85cb232d"
+    },
+    {
+      "path": "vjepa2/assets/vjepa2-abstract-new.png",
+      "source_sha256": "9d092de5fd7e2bab74e2b531cfe80424d3d69f1c1606652ffec61196673cdb82"
+    },
+    {
+      "path": "vjepa2/assets/vjepa2-ac-abstract-new.png",
+      "source_sha256": "30b48d9bab36759ba0d708c0812e439bed07de255c7bf6c74f3a29a0880dafb7"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/dataloader.py",
+      "source_sha256": "84bf76fe2b4c8e4389796f45614a8b08441701ab09a4bcf406dfe16ea85d7b95"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/epickitchens.py",
+      "source_sha256": "9f232719e8046f0b9830de18df44c2178ffd3b194ea8fcde6d6a1ffee504e4ce"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/eval.py",
+      "source_sha256": "76a2e58bd976b6b58d81d7d47eebdb382571e44847c99d8adef5b7073e5ca068"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/losses.py",
+      "source_sha256": "0989c2b76b115e3dbde6f68c5b0f1ef86bd1b0b692cceba80f4c52edd24fa545"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/metrics.py",
+      "source_sha256": "69c6891c45c66526112f5ed6cbb48b259683643d6126325e96df767c2e5ed4c2"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/modelcustom/vit_encoder_predictor_concat_ar.py",
+      "source_sha256": "e192295dd6dca9ab6b130c1d3994dc83eda2744ae97d0c9655889c1eed358b0c"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/models.py",
+      "source_sha256": "bbadbc0eb8890d2f207eb107c3e939b0538ac932dfe8335b86eaba8fabbf8a9b"
+    },
+    {
+      "path": "vjepa2/evals/action_anticipation_frozen/utils.py",
+      "source_sha256": "cb0156f0dd1ba94499b6e17558d3471fd3f8e989cc5481132987a201bb32d382"
+    },
+    {
+      "path": "vjepa2/evals/hub/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vjepa2/evals/hub/preprocessor.py",
+      "source_sha256": "1f0776605ef69689a99ac79527b391712680e96c0d95735035355ae0e0aea58b"
+    },
+    {
+      "path": "vjepa2/evals/image_classification_frozen/eval.py",
+      "source_sha256": "7497519d6c52f7b1278ff4b5cab72deba7d953362c7d204bd6406ca879fe8f02"
+    },
+    {
+      "path": "vjepa2/evals/image_classification_frozen/modelcustom/vit_encoder.py",
+      "source_sha256": "f60598f6cef9f0d7045ee7c0ab990913934b06128c1e57f6757ed664a9a4f87b"
+    },
+    {
+      "path": "vjepa2/evals/image_classification_frozen/models.py",
+      "source_sha256": "7ffa9bbf0f320c75d88ac54820590d923a3d1d63d6d28af42843e2f45c681117"
+    },
+    {
+      "path": "vjepa2/evals/main.py",
+      "source_sha256": "97a1ed63acbd59688cc514133d4cf8c4706f247fa8ec77b43d4df5f2dc708e8c"
+    },
+    {
+      "path": "vjepa2/evals/main_distributed.py",
+      "source_sha256": "624e4e49641f3d048feb2606d94a74c2d48e3d8338145485a1cd154cb090e680"
+    },
+    {
+      "path": "vjepa2/evals/scaffold.py",
+      "source_sha256": "30576671b09447ef91348c59e5c91170a7230b0174660b62d34c1b8af7205d19"
+    },
+    {
+      "path": "vjepa2/evals/video_classification_frozen/eval.py",
+      "source_sha256": "a8ef0fb1defc38af94db05e66aee9200eecbade970b5528d25debffd664cfca7"
+    },
+    {
+      "path": "vjepa2/evals/video_classification_frozen/modelcustom/vit_encoder_multiclip.py",
+      "source_sha256": "493b73b0b39dc97e231593868c2f33573c1226a89135f9c2be1acfb2eabe8586"
+    },
+    {
+      "path": "vjepa2/evals/video_classification_frozen/modelcustom/vit_encoder_multiclip_multilevel.py",
+      "source_sha256": "1e0e3f196fae5a2885276b6de49e8d9465fe5ab0c0d29c95d874ad2b2e4355ff"
+    },
+    {
+      "path": "vjepa2/evals/video_classification_frozen/models.py",
+      "source_sha256": "7f8b823061524c7b776b75a1163556570b62a190eb865e1f9b5e6b8be8a4a287"
+    },
+    {
+      "path": "vjepa2/evals/video_classification_frozen/utils.py",
+      "source_sha256": "7d3b213eb0793c1fcb40588ba3c074ec1cd4a9b9c6370626f4ffdade117f68f8"
+    },
+    {
+      "path": "vjepa2/hubconf.py",
+      "source_sha256": "ff61e6a4b0510cc34758c39e5d575afda997428acec33f390457713c3a8c8919"
+    },
+    {
+      "path": "vjepa2/notebooks/energy_landscape_example.ipynb",
+      "source_sha256": "57caba74909760362a18a15554e16c5a1900c2bed46f2f7d27176dc590c2ba8a"
+    },
+    {
+      "path": "vjepa2/notebooks/utils/mpc_utils.py",
+      "source_sha256": "79f4b753e0faf4ea5a7531dd1f2f1b2e160d8d6907c34b4c1914aeef09f28341"
+    },
+    {
+      "path": "vjepa2/notebooks/utils/world_model_wrapper.py",
+      "source_sha256": "73d305a06bc916c34ca4aaf42e8b1c91122e00336110ba21cd6531df61372123"
+    },
+    {
+      "path": "vjepa2/notebooks/vjepa2_demo.ipynb",
+      "source_sha256": "53328c6e88c86d91f6ed8d7dc4cc36ef7c3123cb64cd8b5b8ceed6466db3beb8"
+    },
+    {
+      "path": "vjepa2/notebooks/vjepa2_demo.py",
+      "source_sha256": "c8cac3d63bcec5385496c087736f4f6badb242ef1d7d2256c1a9cfbfe4a26f73"
+    },
+    {
+      "path": "vjepa2/pyproject.toml",
+      "source_sha256": "43fd205dd1e313c25f3a8b23ffd02ce837fae42fc411c1622668f61d4804edff"
+    },
+    {
+      "path": "vjepa2/requirements-test.txt",
+      "source_sha256": "9f4475f20ef97012674c6c2a66fdec9c1d18138625eacb25b485289ca1da0b71"
+    },
+    {
+      "path": "vjepa2/requirements.txt",
+      "source_sha256": "5da0e39fecec57f4866657cbeae9af9aa32a7422d896773f3a0e67e0848a2a42"
+    },
+    {
+      "path": "vjepa2/setup.py",
+      "source_sha256": "682288ebe0ec21907320781906bf249c5802ae836777bb17808cc0264159cc78"
+    },
+    {
+      "path": "vjepa2/src/hub/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vjepa2/src/hub/backbones.py",
+      "source_sha256": "9366e46b075f42f92c5a4d2c8ca98612f17205c8503f67c513d64c71605642e0"
+    },
+    {
+      "path": "vjepa2/src/masks/default.py",
+      "source_sha256": "5329acaf6eb8f72a0b2d285944824bc4d61c24598eb6c996cf3a5a62f3d243f9"
+    },
+    {
+      "path": "vjepa2/src/masks/multiseq_multiblock3d.py",
+      "source_sha256": "17a27c016b0e92143806c61495d66c1bc705c5bc9f946f40c1781700969b9c95"
+    },
+    {
+      "path": "vjepa2/src/masks/utils.py",
+      "source_sha256": "833f111a0fa5ffdbd3a6412e2dace2517c3c178f49c14f8bb631d9f6a070dfd0"
+    },
+    {
+      "path": "vjepa2/src/models/ac_predictor.py",
+      "source_sha256": "71f0cfc2817523aff3bfbcd023d936a9826caba5363b75ccfc97ecf04d73f2e3"
+    },
+    {
+      "path": "vjepa2/src/models/attentive_pooler.py",
+      "source_sha256": "76c957b65b169e9e8fa220b32d0840b66d1ebe9608ce181f1554a8a3b9a1caee"
+    },
+    {
+      "path": "vjepa2/src/models/predictor.py",
+      "source_sha256": "2bf4818fc8674c94fc199de0462096eb0bbdc01eaa2ec742d9406415fc1ab680"
+    },
+    {
+      "path": "vjepa2/src/models/utils/modules.py",
+      "source_sha256": "a5f99908fd7a903269e934ae52a5e3443d3660bf7ff16b87827130f362658ebc"
+    },
+    {
+      "path": "vjepa2/src/models/utils/patch_embed.py",
+      "source_sha256": "1823c40b34410e70eb313360e21678e18a0ee5465b5d47de9f3d967c074f5a9d"
+    },
+    {
+      "path": "vjepa2/src/models/utils/pos_embs.py",
+      "source_sha256": "e6d3b3863ade47b3734a3b443f1bcc93eab02e39bf596ea199517f68ccab443e"
+    },
+    {
+      "path": "vjepa2/src/models/vision_transformer.py",
+      "source_sha256": "f77b4241be731d0c4160844050383b6f9255f1a91147d1ff8041cbae3cd2a2ce"
+    },
+    {
+      "path": "vjepa2/src/utils/checkpoint_loader.py",
+      "source_sha256": "8ae1c92e095dabed897694101e35393ed5b20da2b51c5bebae3dceda427472ce"
+    },
+    {
+      "path": "vjepa2/src/utils/distributed.py",
+      "source_sha256": "52342428ee4eafaf685471afd91912462057bed59267faec42cf7640d8c08861"
+    },
+    {
+      "path": "vjepa2/src/utils/logging.py",
+      "source_sha256": "0bf5298ecce7e59d90fcb3e4cc68eba988e3e8af4d4a08c91e94bdcd29f76b2e"
+    },
+    {
+      "path": "vjepa2/src/utils/monitoring.py",
+      "source_sha256": "8fc1feb76396af17ed3753d3f9c4ad0b75d3908122a49b209537d6e3653427c5"
+    },
+    {
+      "path": "vjepa2/src/utils/schedulers.py",
+      "source_sha256": "e35b2162c9df04f25ef4dbc51a1e9df41e362dee6d9d2b494321d81e44fe4659"
+    },
+    {
+      "path": "vjepa2/src/utils/tensors.py",
+      "source_sha256": "782b58bd2af456e184750e5318ab773105108383f61b280fe4c7a90f46add2c8"
+    },
+    {
+      "path": "vjepa2/src/utils/wrappers.py",
+      "source_sha256": "aa57f9e22b2530454cc2c72665b59f93237aee57cddfdb6790f8a5e0cd1c9ab5"
+    },
+    {
+      "path": "vjepa2/tests/__init__.py",
+      "source_sha256": "f5193302a8be95cb9b994e08305c521e0459a8400cea0a0f98cf32df036f2fd3"
+    },
+    {
+      "path": "vjepa2/tests/models/__init__.py",
+      "source_sha256": "f5193302a8be95cb9b994e08305c521e0459a8400cea0a0f98cf32df036f2fd3"
+    },
+    {
+      "path": "vjepa2/tests/models/test_models.py",
+      "source_sha256": "0fd37d6f73947cd3d9fe8d15bdca4fd2389649ba5068fd5bf53d8b4d5cc7d7af"
+    },
+    {
+      "path": "vjepa2/tests/models/test_predictor.py",
+      "source_sha256": "1fc357dc19cbec48d9c0017064191963b9b37e24627e59ff50ad7218001a108c"
+    },
+    {
+      "path": "vjepa2/tests/models/test_vision_transformer.py",
+      "source_sha256": "34102d7b32e529f6837d63adfd09d7cb8a9271a49b3826ec244a17cceab911fd"
+    }
+  ],
+  "result_files": [
+    {
+      "path": "results/per_sample/B_seed42.csv",
+      "source_sha256": "88f905e2de190c92c54d42bb7616bfbbbb0b2aa39bbb12fa47430cc4e59dd73b",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/MG_seed42.csv",
+      "source_sha256": "5cb7c58a3a9ec3410cb9e5bb2cbfebf8fd18b16079f7830cb6ef65e293f4d405",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/KProj_seed42.csv",
+      "source_sha256": "e3720d5c5361eb9120c45a0e728aef4024b188b81828a77b7b24cce324dbcb82",
+      "source_file": "kinematic_projection_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/B_repeated_seed42.csv",
+      "source_sha256": "88f905e2de190c92c54d42bb7616bfbbbb0b2aa39bbb12fa47430cc4e59dd73b",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/B_seed43.csv",
+      "source_sha256": "5832286b8cf7e0e4067a1ece88629dc01256e7841fd29d7785d77e5829946b72",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/MG_seed43.csv",
+      "source_sha256": "2e8b08f7bae18ce2cffb70bd38f5fb60ad91ed51d77466bddd66d282863d487c",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/KProj_seed43.csv",
+      "source_sha256": "54523aab83f41d39afd5fca8bdd5fd53a6b86a80f78d01a0139efa24607c43ca",
+      "source_file": "kinematic_projection_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/B_repeated_seed43.csv",
+      "source_sha256": "5832286b8cf7e0e4067a1ece88629dc01256e7841fd29d7785d77e5829946b72",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/B_seed44.csv",
+      "source_sha256": "0ffa5453431eeafebf1478a6aadc2fda4cc634fd364c68e34b3be29123f5287e",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/MG_seed44.csv",
+      "source_sha256": "d6cd9c8628ea7c091b9da77ecfee909e5fc31661613204e632f8894c755a43d9",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/KProj_seed44.csv",
+      "source_sha256": "a6c18da291933d0be3491ef21580644b5f9d3b81d8d2f1175f66ba2420a4782a",
+      "source_file": "kinematic_projection_per_sample.csv"
+    },
+    {
+      "path": "results/per_sample/B_repeated_seed44.csv",
+      "source_sha256": "0ffa5453431eeafebf1478a6aadc2fda4cc634fd364c68e34b3be29123f5287e",
+      "source_file": "direct32_per_sample.csv"
+    },
+    {
+      "path": "results/model_seed_summary.csv",
+      "source_sha256": "0b8cecac44531e7fb5b581380766db703ff706c59a3b7477c7a205a9d9d8db74",
+      "source_file": "model_seed_summary.csv"
+    },
+    {
+      "path": "results/per_seed_pairwise.csv",
+      "source_sha256": "9c816d459e7149dcf472e1a3ce7c61559ff47b8396fa5a4f06d8053360d7c311",
+      "source_file": "per_seed_pairwise.csv"
+    },
+    {
+      "path": "results/B_MG_KProj_multiseed_summary.json",
+      "source_sha256": "5a0385a06a6c2275f95426f06f6120feef963cdd749bb51526188b3a1fa295ea",
+      "source_file": "B_MG_KProj_multiseed_summary.json"
+    }
+  ],
+  "additional_source_files": [
+    {
+      "path": "scripts/gate0_guidance_probe.py",
+      "source_commit": "0385f7057497a553f3094553f69aac68802572fe",
+      "source_sha256": "8b14f3a1bec23a35c45881d8a3f435196560c66ee4e595cbf2e463d6197f0e8b"
+    }
+  ],
+  "release_modifications": "Public documentation, result packaging and verification; local path redaction; release tests omit locked final-test membership; derivative NOTICE appended."
+}

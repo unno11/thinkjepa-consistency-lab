@@ -1,0 +1,13 @@
+{
+  "training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "validation_samples_per_seed": 200,
+  "tasks": 13,
+  "repeated_baseline_max_delta": 0.0,
+  "archived_summary_max_delta": 2.6645352591003757e-15,
+  "final_test_evaluated": false,
+  "scope": "Recomputed archived per-sample metrics; no training or inference rerun"
+}

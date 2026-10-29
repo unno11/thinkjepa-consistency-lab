@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "thinkjepa_direct32_kinematic_projection_control_v1",
+  "method": "KProjPredMedian",
+  "reference_length_source": "temporal_median_of_own_prediction",
+  "direction_source": "same_frame_own_prediction",
+  "root_policy": "preserve_predicted_forearm_roots",
+  "future_ground_truth_access": false,
+  "observed_ground_truth_access": false,
+  "cross_sample_operations": false,
+  "scientific_role": "zero_training_postprocess_control",
+  "limitations": [
+    "uses the complete jointly predicted horizon",
+    "preserves predicted bone directions and therefore cannot directly correct angle error",
+    "is not an online causal filter"
+  ]
+}

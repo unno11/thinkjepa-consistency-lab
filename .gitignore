@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.testtmp/
+.venv/
+data/
+outputs/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.mp4
+*.pdf
+.env
+.env.*
+protocol/splits/test.txt

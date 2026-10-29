@@ -1,0 +1,62 @@
+{
+    "schema_version": 1,
+    "name": "thinkjepa_direct32_B_MG_alllayers_gate0fixed_seed43_validation_v1",
+    "rollout": {
+        "past_frames": 32,
+        "future_frames": 32,
+        "temporal_stride": 1,
+        "joint_count": 52,
+        "predictor": "thinkjepa",
+        "trajmode": "traj",
+        "joint_pred": true,
+        "ref_mode": "none",
+        "inference_amp": false,
+        "vlm_source": "both",
+        "vlm_layer_selector": "all",
+        "vlm_cond_mode": "film",
+        "vlm_guidance_policy": "observation_window_cache",
+        "future_camera_extrinsics": "coordinate_transform_only"
+    },
+    "validation": {
+        "manifest": "protocol/splits/val.txt",
+        "sha256": "82f237a5acbd99f078dd1dd8675bf66b041d0ce56c885a3141817d8ece401b15",
+        "expected_samples": 200
+    },
+    "roles": {
+        "B": {
+            "expected_epoch": 76,
+            "weights": {
+                "bone": 0.0,
+                "palm": 0.0,
+                "velocity": 0.0,
+                "acceleration": 0.0,
+                "angle": 0.0
+            },
+            "expected_seed": 43
+        },
+        "MG": {
+            "expected_epoch": 99,
+            "weights": {
+                "bone": 0.0006,
+                "palm": 0.0,
+                "velocity": 0.45,
+                "acceleration": 0.2,
+                "angle": 0.0035
+            },
+            "expected_seed": 43
+        }
+    },
+    "metrics": {
+        "implementation": "evaluation.metrics.compute_trajectory_metrics",
+        "per_sample": true,
+        "aggregate": "unweighted_mean_over_samples"
+    },
+    "guards": {
+        "validation_only": true,
+        "explicit_manifest_required": true,
+        "future_ground_truth_joint_reference_forbidden": true,
+        "batch_skip_forbidden": true,
+        "nonfinite_prediction_fails": true,
+        "existing_output_refused": true
+    }
+}
