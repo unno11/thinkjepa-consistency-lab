@@ -1,0 +1,2 @@
+# Frozen evidence and split hashes must survive cross-platform checkouts unchanged.
+* -text
